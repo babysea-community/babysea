@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "settings": {
+    "networkAccess": {
+      "action": "ignore",
+      "comment": "This is an HTTP API client SDK. Network access to region endpoints (api.us.babysea.ai, api.eu.babysea.ai, api.jp.babysea.ai) or a custom baseUrl is the intended purpose."
+    }
+  }
+}
