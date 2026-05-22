@@ -19,6 +19,12 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 - Aligned the SDK Sentry Project Check with the other OSS repositories so explicitly allowed Sentry API permission denials skip strict validation instead of failing repository CI.
 - Expanded SDK Dependabot version updates to check npm dependencies daily and GitHub Actions weekly.
 
+### Fixed
+
+- Replaced SDK base URL trailing-slash normalization with a bounded string scan, resolving the CodeQL polynomial ReDoS alert.
+- Added TypeScript 6 deprecation handling for SDK declaration builds without changing the published package version.
+- Replaced Sentry URL trailing-slash regex normalization with a bounded string scan to avoid CodeQL ReDoS noise.
+
 ## [1.4.6] - 2026-05-21
 
 ### Changed
