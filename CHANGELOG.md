@@ -15,6 +15,7 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 - Updated SDK Package Check, CodeQL, and Sentry workflows to the same Node 24-compatible GitHub Action majors used by the other BabySea OSS repositories.
 - Constrained SDK Codecov uploads to the explicit LCOV report and required `CODECOV_TOKEN` for trusted GitHub Actions and CircleCI uploads.
+- Aligned the SDK Sentry Project Check with the other OSS repositories so explicitly allowed Sentry API permission denials skip strict validation instead of failing repository CI.
 
 ## [1.4.6] - 2026-05-21
 

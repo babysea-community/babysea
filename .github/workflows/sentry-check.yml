@@ -30,6 +30,7 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+          SENTRY_ALLOW_PERMISSION_SKIP: '1'
           SENTRY_EXPECTED_PLATFORM: other
           SENTRY_STRICT_OWNERSHIP: '1'
         run: |

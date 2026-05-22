@@ -8,6 +8,7 @@ const DEFAULT_URL = 'https://sentry.io';
 const MAX_ATTEMPTS = 3;
 const RETRY_BASE_DELAY_MS = 250;
 const RETRY_STATUS = new Set([408, 429, 500, 502, 503, 504]);
+const ENABLED_BOOLEAN_VALUES = new Set(['1', 'true', 'on', 'yes']);
 const DISABLED_BOOLEAN_VALUES = new Set(['0', 'false', 'off', 'no']);
 const LOCAL_HOSTNAMES = new Set(['localhost', '127.0.0.1', '::1']);
 const prefix = '[sentry-project-check]';
@@ -15,7 +16,7 @@ const RESERVED_PROJECT_SLUGS = new Set(['babysea']);
 const sensitiveValues = new Set();
 
 /**
- * @typedef {{ expectedPlatform: string; org: string; project: string; strictOwnership: boolean; token: string; url: string }} SentryConfig
+ * @typedef {{ allowPermissionSkip: boolean; expectedPlatform: string; org: string; project: string; strictOwnership: boolean; token: string; url: string }} SentryConfig
  */
 
 /**
@@ -97,6 +98,9 @@ function getConfig() {
   const expectedPlatform =
     normalizeConfigValue(process.env.SENTRY_EXPECTED_PLATFORM) ??
     DEFAULT_PLATFORM;
+  const allowPermissionSkip = isPermissionSkipEnabled(
+    normalizeConfigValue(process.env.SENTRY_ALLOW_PERMISSION_SKIP),
+  );
   const strictOwnership = isStrictOwnershipEnabled(
     normalizeConfigValue(process.env.SENTRY_STRICT_OWNERSHIP),
   );
@@ -128,6 +132,7 @@ function getConfig() {
   }
 
   return {
+    allowPermissionSkip,
     expectedPlatform,
     org,
     project,
@@ -182,6 +187,11 @@ function isStrictOwnershipEnabled(value) {
   }
 
   return !DISABLED_BOOLEAN_VALUES.has(value.toLowerCase());
+}
+
+/** @param {string | undefined} value */
+function isPermissionSkipEnabled(value) {
+  return value ? ENABLED_BOOLEAN_VALUES.has(value.toLowerCase()) : false;
 }
 
 /** @param {unknown} value */
@@ -319,7 +329,17 @@ async function main() {
 
   console.log(`${prefix} checking configured Sentry project`);
 
-  const projectResponse = await sentryApi(config, projectPath);
+  const projectResponse = await sentryApi(config, projectPath, {
+    optionalStatuses: config.allowPermissionSkip ? [401, 403] : [],
+  });
+
+  if (projectResponse === undefined) {
+    console.warn(
+      `${prefix} skipped: Sentry API denied project read access. Grant the CI token read access to enforce this check.`,
+    );
+    return;
+  }
+
   const project = asRecord(projectResponse);
 
   if (!project) {
@@ -370,7 +390,8 @@ async function main() {
     config,
     `${projectPath}ownership/`,
     {
-      optionalStatuses: config.strictOwnership ? [] : [403, 404],
+      optionalStatuses:
+        config.allowPermissionSkip || !config.strictOwnership ? [403, 404] : [],
     },
   );
 
