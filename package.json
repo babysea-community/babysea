@@ -17,7 +17,7 @@
   ],
   "homepage": "https://docs.babysea.ai",
   "bugs": {
-    "url": "https://github.com/babysea-ai/babysea/issues"
+    "url": "https://github.com/babysea-community/babysea/issues"
   },
   "license": "Apache-2.0",
   "author": {
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/babysea-ai/babysea.git"
+    "url": "git+https://github.com/babysea-community/babysea.git"
   },
   "type": "module",
   "main": "./dist/index.cjs",

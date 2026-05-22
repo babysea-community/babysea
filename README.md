@@ -31,7 +31,6 @@
 
 <strong>Project</strong>
 
-[![npm version](https://img.shields.io/npm/v/babysea?style=for-the-badge&color=CB3837&logo=npm&logoColor=white)](https://www.npmjs.com/package/babysea)
 [![BabySea OSS SDK](https://custom-icon-badges.demolab.com/badge/oss-sdk-7C3AED?style=for-the-badge&logo=babysea&logoColor=white)](#babysea-oss-taxonomy)
 [![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/oss_status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
 [![License](https://custom-icon-badges.demolab.com/badge/license-apache_2.0-059669?style=for-the-badge&logo=apache&logoColor=white)](LICENSE)
@@ -44,13 +43,14 @@
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/babysea?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=FDUBOJu692)](https://codecov.io/github/babysea-community/babysea)
 [![Snyk](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/snyk-security.yml?branch=main&style=for-the-badge&label=snyk&logo=snyk&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/snyk-security.yml)
 [![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/sentry-check.yml)
-[![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-ai/babysea/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-ai/babysea/actions/workflows/codeql.yml)
-[![Package](https://img.shields.io/github/actions/workflow/status/babysea-ai/babysea/publish-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-ai/babysea/actions/workflows/publish-check.yml)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-ai/babysea/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/codeql.yml)
+[![Package](https://img.shields.io/github/actions/workflow/status/babysea-ai/babysea/publish-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/publish-check.yml)
 
 <br/>
 
 <strong>Runtime</strong>
 
+[![npm Version](https://img.shields.io/npm/v/babysea?style=for-the-badge&color=CB3837&logo=npm&logoColor=white)](https://www.npmjs.com/package/babysea)
 [![Node.js](https://img.shields.io/badge/runtime-Node.js-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
 [![Edge](https://custom-icon-badges.demolab.com/badge/runtime-edge-000000?style=for-the-badge&logo=cloud&logoColor=white)](#configuration)
 [![Browser](https://custom-icon-badges.demolab.com/badge/runtime-browser-3399CC?style=for-the-badge&logo=browser&logoColor=white)](#configuration)

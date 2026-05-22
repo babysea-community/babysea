@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 22
       - name: Validate Sentry checker script
         run: node --check scripts/sentry-project-check.mjs
       - name: Verify Sentry project wiring
@@ -32,7 +32,13 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
           SENTRY_EXPECTED_PLATFORM: other
           SENTRY_STRICT_OWNERSHIP: '1'
-        run: node scripts/sentry-project-check.mjs
+        run: |
+          if [[ -z "$SENTRY_AUTH_TOKEN" || -z "$SENTRY_ORG" || -z "$SENTRY_PROJECT" ]]; then
+            echo "::notice::Sentry project check skipped; configure SENTRY_ORG, SENTRY_PROJECT, and SENTRY_AUTH_TOKEN to enable it."
+            exit 0
+          fi
+
+          node scripts/sentry-project-check.mjs
       - name: Skip Sentry secret on pull requests
         if: ${{ github.event_name == 'pull_request' }}
         run: echo "Sentry secrets are not used during pull_request runs; push, scheduled, and manual checks verify project wiring."

@@ -1,0 +1,113 @@
+version: 2.1
+
+jobs:
+  sdk-package:
+    docker:
+      - image: cimg/node:22.21
+    working_directory: ~/project
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - babysea-sdk-pnpm-v1-{{ checksum "package.json" }}
+      - run:
+          name: Set up pnpm
+          command: |
+            echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$BASH_ENV"
+            source "$BASH_ENV"
+            npm install --global --prefix "$HOME/.local" pnpm@10.19.0
+            pnpm config set store-dir ~/.pnpm-store
+      - run:
+          name: Install dependencies
+          command: pnpm install
+      - save_cache:
+          key: babysea-sdk-pnpm-v1-{{ checksum "package.json" }}
+          paths:
+            - ~/.pnpm-store
+      - run:
+          name: Lint
+          command: pnpm run lint
+      - run:
+          name: Typecheck
+          command: pnpm run typecheck
+      - run:
+          name: Typecheck examples
+          command: pnpm run typecheck:examples
+      - run:
+          name: Test coverage
+          command: pnpm run test:coverage
+      - persist_to_workspace:
+          root: .
+          paths:
+            - coverage/lcov.info
+      - run:
+          name: Format check
+          command: pnpm run format
+      - run:
+          name: Build
+          command: pnpm run build
+      - run:
+          name: Package dry run
+          command: pnpm run pack:dry-run
+
+  dependency-audit:
+    docker:
+      - image: cimg/node:22.21
+    working_directory: ~/project
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - babysea-sdk-pnpm-v1-{{ checksum "package.json" }}
+      - run:
+          name: Set up pnpm
+          command: |
+            echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$BASH_ENV"
+            source "$BASH_ENV"
+            npm install --global --prefix "$HOME/.local" pnpm@10.19.0
+            pnpm config set store-dir ~/.pnpm-store
+      - run:
+          name: Install dependencies
+          command: pnpm install
+      - save_cache:
+          key: babysea-sdk-pnpm-v1-{{ checksum "package.json" }}
+          paths:
+            - ~/.pnpm-store
+      - run:
+          name: pnpm audit production high+
+          command: pnpm audit --prod --audit-level=high
+
+  codecov-upload:
+    docker:
+      - image: cimg/base:stable
+    working_directory: ~/project
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Upload coverage to Codecov
+          command: |
+            if [ -z "${CODECOV_TOKEN:-}" ]; then
+              echo "CODECOV_TOKEN is not configured in CircleCI; skipping trusted main coverage upload."
+              exit 0
+            fi
+            curl -fsSLO https://cli.codecov.io/latest/linux/codecov
+            chmod +x codecov
+            ./codecov --auto-load-params-from CircleCI upload-process \
+              -Z \
+              -t "$CODECOV_TOKEN" \
+              -C "$CIRCLE_SHA1" \
+              -f coverage/lcov.info \
+              --disable-search
+
+workflows:
+  package-check:
+    jobs:
+      - sdk-package
+      - dependency-audit
+      - codecov-upload:
+          requires:
+            - sdk-package
+          filters:
+            branches:
+              only: main
