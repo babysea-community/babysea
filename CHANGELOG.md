@@ -10,12 +10,14 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 - Added SDK lcov coverage generation and Package Check Codecov upload using `coverage/lcov.info`.
 - Added repository `codecov.yml`, trusted CircleCI package/audit/Codecov upload jobs, and a Snyk Security workflow for the standalone BabySea SDK repository.
 - Added an explicit `--repo-only` SDK GitHub deploy mode for same-version repository refreshes that do not change package versions, push release tags, or create GitHub Releases.
+- Added Dependabot version-update configuration for the standalone BabySea SDK repository.
 
 ### Changed
 
 - Updated SDK Package Check, CodeQL, and Sentry workflows to the same Node 24-compatible GitHub Action majors used by the other BabySea OSS repositories.
 - Constrained SDK Codecov uploads to the explicit LCOV report and required `CODECOV_TOKEN` for trusted GitHub Actions and CircleCI uploads.
 - Aligned the SDK Sentry Project Check with the other OSS repositories so explicitly allowed Sentry API permission denials skip strict validation instead of failing repository CI.
+- Expanded SDK Dependabot version updates to check npm dependencies daily and GitHub Actions weekly.
 
 ## [1.4.6] - 2026-05-21
 
