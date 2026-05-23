@@ -157,6 +157,17 @@ function normalizeConfigValue(value) {
 }
 
 /** @param {string} value */
+function stripTrailingSlashes(value) {
+  let end = value.length;
+
+  while (end > 0 && value.charCodeAt(end - 1) === 47) {
+    end -= 1;
+  }
+
+  return end === value.length ? value : value.slice(0, end);
+}
+
+/** @param {string} value */
 function normalizeSentryUrl(value) {
   let url;
 
@@ -173,11 +184,11 @@ function normalizeSentryUrl(value) {
     throw new Error('SENTRY_URL must use HTTPS unless it points to localhost.');
   }
 
-  url.pathname = url.pathname.replace(/\/+$/, '');
+  url.pathname = stripTrailingSlashes(url.pathname);
   url.search = '';
   url.hash = '';
 
-  return url.toString().replace(/\/+$/, '');
+  return stripTrailingSlashes(url.toString());
 }
 
 /** @param {string | undefined} value */

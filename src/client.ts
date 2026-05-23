@@ -107,6 +107,16 @@ const SDK_USER_AGENT = `${SDK_NAME}/${SDK_VERSION} (${RUNTIME_INFO.runtime}${
 })`;
 const IS_BROWSER = RUNTIME_INFO.runtime === 'browser';
 
+function stripTrailingSlashes(value: string): string {
+  let end = value.length;
+
+  while (end > 0 && value.charCodeAt(end - 1) === 47) {
+    end -= 1;
+  }
+
+  return end === value.length ? value : value.slice(0, end);
+}
+
 /**
  * BabySea API client
  *
@@ -190,11 +200,11 @@ export class BabySea {
     }
 
     this.apiKey = options.apiKey;
-    this.baseUrl = (
+    this.baseUrl = stripTrailingSlashes(
       options.baseUrl ??
-      (options.region ? REGION_URLS[options.region] : undefined) ??
-      DEFAULT_BASE_URL
-    ).replace(/\/+$/, '');
+        (options.region ? REGION_URLS[options.region] : undefined) ??
+        DEFAULT_BASE_URL,
+    );
     this.timeout = options.timeout ?? DEFAULT_TIMEOUT;
     this.maxRetries = options.maxRetries ?? DEFAULT_MAX_RETRIES;
 
