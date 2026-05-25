@@ -4,6 +4,10 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
+### Added
+
+- Added GitHub issue templates (`.github/ISSUE_TEMPLATE/bug_report.yml`, `feature_request.yml`, `config.yml`) and `.github/PULL_REQUEST_TEMPLATE.md` so contributors get a consistent intake form. The template set is identical across all BabySea OSS repos (primitives, starters, SDK) so it can be reused without project-specific adjustments.
+
 ### Fixed
 
 - Added `.prettierignore` and `.pnpm-store` to `.gitignore` so the GitLab CI `verify:format` job no longer recurses into the pnpm content-addressable store and fails on vendored Markdown/JSON inside `.pnpm-store/`, matching the babychain starter's prettier-ignore parity.
