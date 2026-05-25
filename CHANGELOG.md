@@ -6,6 +6,7 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ### Added
 
+- Added a GitLab CI pipeline (`.gitlab-ci.yml`) for the standalone SDK repository covering format/lint/typecheck/examples-typecheck verify jobs, coverage tests with Cobertura + LCOV artifacts, tsup build with `exports:check` and `pack:dry-run`, gated SHA256-verified Codecov upload, `pnpm audit --prod --audit-level=high`, pinned Gitleaks secret scan, and the GitLab SAST/Dependency-Scanning/Secret-Detection/Code-Quality templates with Advanced SAST and historic secret scanning enabled.
 - Added SDK contributing and code-of-conduct docs, and included them in the package publish surface.
 - Added SDK lcov coverage generation and Package Check Codecov upload using `coverage/lcov.info`.
 - Added repository `codecov.yml`, trusted CircleCI package/audit/Codecov upload jobs, and a Snyk Security workflow for the standalone BabySea SDK repository.

@@ -1,7 +1,7 @@
 <div align="center">
 
 <p>
-  <img src="public/icon.png" width="100" alt="BabySea SDK icon" />
+  <img src="public/icon.png" width="140" alt="BabySea SDK icon" />
 </p>
 
 <h1>
@@ -24,12 +24,17 @@
 
 <br />
 
-<img src="public/card.png" alt="BabySea SDK card" />
+<strong>Quick links</strong>
+
+[![BabySea Website](https://custom-icon-badges.demolab.com/badge/visit-website-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai)
+[![BabySea Docs](https://custom-icon-badges.demolab.com/badge/learn-docs-2563EB?style=for-the-badge&logo=babysea&logoColor=white)](https://docs.babysea.ai)
+[![BabySea Model Schema](https://custom-icon-badges.demolab.com/badge/explore-model_schema-DB2777?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai/model-schema)
+[![BabySea FAQs](https://custom-icon-badges.demolab.com/badge/see-faqs-7C3AED?style=for-the-badge&logo=babysea&logoColor=white)](https://us.babysea.ai/playground)
+[![BabySea Playground](https://custom-icon-badges.demolab.com/badge/try-playground-EA580c?style=for-the-badge&logo=babysea&logoColor=white)](https://us.babysea.ai/playground)
 
 <br/>
-<br/>
 
-<strong>Project</strong>
+<strong>Project details</strong>
 
 [![BabySea OSS SDK](https://custom-icon-badges.demolab.com/badge/oss-sdk-7C3AED?style=for-the-badge&logo=babysea&logoColor=white)](#babysea-oss-taxonomy)
 [![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/oss_status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
@@ -37,15 +42,17 @@
 
 <br/>
 
-<strong>Assistants & Bots</strong>
+<strong>Assistants & bots</strong>
 
+![Claude](https://img.shields.io/badge/claude-D97757?style=for-the-badge&logo=claude&logoColor=white)
+![OpenAI](https://custom-icon-badges.demolab.com/badge/gpt-000000?style=for-the-badge&logo=openai&logoColor=white)
 ![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)
-![OpenAI](https://custom-icon-badges.demolab.com/badge/openai-000000?style=for-the-badge&logo=openai&logoColor=white)
 
 <br/>
 
 <strong>Checks</strong>
 
+[![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/babychain?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/babychain/-/commits/main)
 [![CircleCI](https://img.shields.io/badge/circleci-passed-003740?style=for-the-badge&logo=circleci&logoColor=white)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/J9zUiRVPXjfZ9YvzjBpnvo/tree/main)
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/babysea?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=FDUBOJu692)](https://codecov.io/github/babysea-community/babysea)
 [![Snyk](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/snyk-security.yml?branch=main&style=for-the-badge&label=snyk&logo=snyk&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/snyk-security.yml)
@@ -64,9 +71,17 @@
 [![Zero Dependencies](https://custom-icon-badges.demolab.com/badge/dependencies-zero-3450D1?style=for-the-badge&logo=pulse&logoColor=white)](#configuration)
 [![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
+<br />
+
+<img src="public/card.png" alt="BabySea SDK card" />
+
+<br />
+
+<img src="public/dashboard.png" alt="BabySea SDK dashboard" />
+
 </div>
 
----
+<br />
 
 ## BabySea OSS taxonomy
 
