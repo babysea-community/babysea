@@ -4,6 +4,10 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
+### Fixed
+
+- Added `.prettierignore` and `.pnpm-store` to `.gitignore` so the GitLab CI `verify:format` job no longer recurses into the pnpm content-addressable store and fails on vendored Markdown/JSON inside `.pnpm-store/`, matching the babychain starter's prettier-ignore parity.
+
 ### Added
 
 - Added a GitLab CI pipeline (`.gitlab-ci.yml`) for the standalone SDK repository covering format/lint/typecheck/examples-typecheck verify jobs, coverage tests with Cobertura + LCOV artifacts, tsup build with `exports:check` and `pack:dry-run`, gated SHA256-verified Codecov upload, `pnpm audit --prod --audit-level=high`, pinned Gitleaks secret scan, and the GitLab SAST/Dependency-Scanning/Secret-Detection/Code-Quality templates with Advanced SAST and historic secret scanning enabled.
