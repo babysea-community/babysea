@@ -13,24 +13,16 @@
 </p>
 
 <p>
-  <strong>Works across Node.js + Edge runtimes + browsers.</strong>
+  <strong>Works across Node.js + Edge runtimes + browsers</strong>
 </p>
-
-<br />
-
-[![BabySea Website](https://custom-icon-badges.demolab.com/badge/babysea-website-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai)
-[![BabySea Docs](https://custom-icon-badges.demolab.com/badge/babysea-docs-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://docs.babysea.ai)
-[![BabySea Playground](https://custom-icon-badges.demolab.com/badge/babysea-playground-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://us.babysea.ai/playground)
 
 <br />
 
 <strong>Quick links</strong>
 
-[![BabySea Website](https://custom-icon-badges.demolab.com/badge/visit-website-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai)
-[![BabySea Docs](https://custom-icon-badges.demolab.com/badge/learn-docs-2563EB?style=for-the-badge&logo=babysea&logoColor=white)](https://docs.babysea.ai)
-[![BabySea Model Schema](https://custom-icon-badges.demolab.com/badge/explore-model_schema-DB2777?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai/model-schema)
-[![BabySea FAQs](https://custom-icon-badges.demolab.com/badge/see-faqs-7C3AED?style=for-the-badge&logo=babysea&logoColor=white)](https://us.babysea.ai/playground)
-[![BabySea Playground](https://custom-icon-badges.demolab.com/badge/try-playground-EA580c?style=for-the-badge&logo=babysea&logoColor=white)](https://us.babysea.ai/playground)
+[![BabySea Website](https://custom-icon-badges.demolab.com/badge/babysea-website-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai)
+[![BabySea Docs](https://custom-icon-badges.demolab.com/badge/babysea-docs-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://docs.babysea.ai)
+[![BabySea Playground](https://custom-icon-badges.demolab.com/badge/babysea-playground-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://us.babysea.ai/playground)
 
 <br/>
 
@@ -74,10 +66,6 @@
 <br />
 
 <img src="public/card.png" alt="BabySea SDK card" />
-
-<br />
-
-<img src="public/dashboard.png" alt="BabySea SDK dashboard" />
 
 </div>
 
