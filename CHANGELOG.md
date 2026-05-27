@@ -26,6 +26,7 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ### Fixed
 
+- Corrected the SDK README CodeQL and Package check badge image URLs to use the validated `babysea-community/babysea` workflow repository.
 - Added `.prettierignore` and `.pnpm-store` to `.gitignore` so the GitLab CI `verify:format` job no longer recurses into the pnpm content-addressable store and fails on vendored Markdown/JSON inside `.pnpm-store/`, matching the babychain starter's prettier-ignore parity.
 - Replaced SDK base URL trailing-slash normalization with a bounded string scan, resolving the CodeQL polynomial ReDoS alert.
 - Added TypeScript 6 deprecation handling for SDK declaration builds without changing the published package version.
