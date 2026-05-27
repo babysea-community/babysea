@@ -66,6 +66,9 @@
     "socket.json"
   ],
   "sideEffects": false,
+  "dependencies": {
+    "zod": "3.25.76"
+  },
   "engines": {
     "node": ">=18"
   },
