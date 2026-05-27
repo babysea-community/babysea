@@ -4,16 +4,11 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
+## [2.0.0] - 2026-05-27
+
 ### Added
 
 - Added GitHub issue templates (`.github/ISSUE_TEMPLATE/bug_report.yml`, `feature_request.yml`, `config.yml`) and `.github/PULL_REQUEST_TEMPLATE.md` so contributors get a consistent intake form. The template set is identical across all BabySea OSS repos (primitives, starters, SDK) so it can be reused without project-specific adjustments.
-
-### Fixed
-
-- Added `.prettierignore` and `.pnpm-store` to `.gitignore` so the GitLab CI `verify:format` job no longer recurses into the pnpm content-addressable store and fails on vendored Markdown/JSON inside `.pnpm-store/`, matching the babychain starter's prettier-ignore parity.
-
-### Added
-
 - Added a GitLab CI pipeline (`.gitlab-ci.yml`) for the standalone SDK repository covering format/lint/typecheck/examples-typecheck verify jobs, coverage tests with Cobertura + LCOV artifacts, tsup build with `exports:check` and `pack:dry-run`, gated SHA256-verified Codecov upload, `pnpm audit --prod --audit-level=high`, pinned Gitleaks secret scan, and the GitLab SAST/Dependency-Scanning/Secret-Detection/Code-Quality templates with Advanced SAST and historic secret scanning enabled.
 - Added SDK contributing and code-of-conduct docs, and included them in the package publish surface.
 - Added SDK lcov coverage generation and Package Check Codecov upload using `coverage/lcov.info`.
@@ -23,6 +18,7 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ### Changed
 
+- **Breaking:** Raised the SDK package engine and documented runtime floor to Node.js 22+, including the README runtime badge shape. Node.js 18 and Node.js 20 are no longer supported by new SDK releases.
 - Updated SDK Package Check, CodeQL, and Sentry workflows to the same Node 24-compatible GitHub Action majors used by the other BabySea OSS repositories.
 - Constrained SDK Codecov uploads to the explicit LCOV report and required `CODECOV_TOKEN` for trusted GitHub Actions and CircleCI uploads.
 - Aligned the SDK Sentry Project Check with the other OSS repositories so explicitly allowed Sentry API permission denials skip strict validation instead of failing repository CI.
@@ -30,6 +26,7 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ### Fixed
 
+- Added `.prettierignore` and `.pnpm-store` to `.gitignore` so the GitLab CI `verify:format` job no longer recurses into the pnpm content-addressable store and fails on vendored Markdown/JSON inside `.pnpm-store/`, matching the babychain starter's prettier-ignore parity.
 - Replaced SDK base URL trailing-slash normalization with a bounded string scan, resolving the CodeQL polynomial ReDoS alert.
 - Added TypeScript 6 deprecation handling for SDK declaration builds without changing the published package version.
 - Replaced Sentry URL trailing-slash regex normalization with a bounded string scan to avoid CodeQL ReDoS noise.

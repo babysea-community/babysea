@@ -1,7 +1,7 @@
 <div align="center">
 
 <p>
-  <img src="public/icon.png" width="140" alt="BabySea SDK icon" />
+  <img src="public/icon.png" width="120" alt="BabySea SDK icon" />
 </p>
 
 <h1>
@@ -34,20 +34,12 @@
 
 <br/>
 
-<strong>Assistants & bots</strong>
-
-![Claude](https://img.shields.io/badge/claude-D97757?style=for-the-badge&logo=claude&logoColor=white)
-![OpenAI](https://custom-icon-badges.demolab.com/badge/gpt-000000?style=for-the-badge&logo=openai&logoColor=white)
-![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)
-
-<br/>
-
 <strong>Checks</strong>
 
 [![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/babysea?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/babysea/-/commits/main)
 [![CircleCI](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fcircleci%2F2uTLcwc4naeNuKDP41es88%2FJ9zUiRVPXjfZ9YvzjBpnvo%2Ftree%2Fmain%3Flimit%3D1&query=%24%5B0%5D.status&style=for-the-badge&logo=circleci&logoColor=white&label=circleci&color=003740)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/J9zUiRVPXjfZ9YvzjBpnvo/tree/main)
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/babysea?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=FDUBOJu692)](https://codecov.io/github/babysea-community/babysea)
-[![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/sentry-check.yml)
+[![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white&color=181225)](https://github.com/babysea-community/babysea/actions/workflows/sentry-check.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-ai/babysea/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/codeql.yml)
 [![Package](https://img.shields.io/github/actions/workflow/status/babysea-ai/babysea/publish-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/publish-check.yml)
 
@@ -55,8 +47,8 @@
 
 <strong>Runtime</strong>
 
-[![npm Version](https://img.shields.io/npm/v/babysea?style=for-the-badge&color=CB3837&logo=npm&logoColor=white)](https://www.npmjs.com/package/babysea)
-[![Node.js](https://img.shields.io/badge/runtime-Node.js-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![npm](https://img.shields.io/npm/v/babysea?style=for-the-badge&color=CB3837&logo=npm&logoColor=white)](https://www.npmjs.com/package/babysea)
+[![Node.js](https://img.shields.io/badge/Node.js-22%2B-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
 [![Edge](https://custom-icon-badges.demolab.com/badge/runtime-edge-000000?style=for-the-badge&logo=cloud&logoColor=white)](#configuration)
 [![Browser](https://custom-icon-badges.demolab.com/badge/runtime-browser-3399CC?style=for-the-badge&logo=browser&logoColor=white)](#configuration)
 [![Zero Dependencies](https://custom-icon-badges.demolab.com/badge/dependencies-zero-3450D1?style=for-the-badge&logo=pulse&logoColor=white)](#configuration)
@@ -182,7 +174,7 @@ Install `babysea`, create a BabySea API key, keep write-capable keys server-side
 
 No provider SDK, queue client, storage client, or framework adapter is required. The package uses only platform `fetch` and `crypto.subtle`.
 
-The SDK supports Node.js 18+, Edge runtimes, browsers, Bun, Deno-compatible fetch runtimes, ESM, and CJS package consumers.
+The SDK supports Node.js 22+, Edge runtimes, browsers, Bun, Deno-compatible fetch runtimes, ESM, and CJS package consumers.
 
 ## 3. Terminology
 
@@ -494,8 +486,8 @@ Every request carries a small set of diagnostic headers so the platform can corr
 | `X-BabySea-SDK-Name`            | `babysea-node`                                           |
 | `X-BabySea-SDK-Version`         | `<package-version>`                                      |
 | `X-BabySea-SDK-Runtime`         | `node`/`deno`/`bun`/`workerd`/`edge`/`browser`/`unknown` |
-| `X-BabySea-SDK-Runtime-Version` | `20.11.1` when known                                     |
-| `User-Agent`                    | `babysea-node/<package-version> (node/20.11.1)`          |
+| `X-BabySea-SDK-Runtime-Version` | `22.0.0` when known                                      |
+| `User-Agent`                    | `babysea-node/<package-version> (node/22.0.0)`           |
 
 No request bodies, prompts, or PII are added by these headers. They contain only SDK and runtime metadata.
 
@@ -982,7 +974,7 @@ interface PaginatedResponse<T> extends ApiResponse<T> {
 
 ## 9. Status
 
-`babysea` is the production TypeScript SDK for BabySea and is published to npm. It targets Node.js 18+, Edge runtimes, and browsers. Release metadata is sourced from package metadata during build; this README does not rely on generated local badge SVGs.
+`babysea` is the production TypeScript SDK for BabySea and is published to npm. It targets Node.js 22+, Edge runtimes, and browsers. Release metadata is sourced from package metadata during build; this README does not rely on generated local badge SVGs.
 
 Current SDK surface:
 

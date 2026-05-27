@@ -1,6 +1,6 @@
 {
   "name": "babysea",
-  "version": "1.4.6",
+  "version": "2.0.0",
   "description": "Production TypeScript SDK for the BabySea execution control plane for generative media. One API, one schema, one lifecycle across image and video inference providers.",
   "keywords": [
     "babysea",
@@ -70,7 +70,7 @@
     "zod": "3.25.76"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "publishConfig": {
     "access": "public"
