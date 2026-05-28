@@ -4,8 +4,17 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
+### Added
+
+- Added `LICENSES.md` and a README security/compliance section documenting the public GitLab and GitHub trust signals for the standalone SDK repository.
+
+### Changed
+
+- Standardized GitLab application security coverage with SAST-IaC, guarded Container Scanning, shared security variables, and public license-compliance documentation.
+
 ### Fixed
 
+- Removed the stale `zod` production dependency entry so the published SDK remains zero-runtime-dependency as documented.
 - Corrected the SDK README CodeQL and Package check badge image URLs to use the validated `babysea-community/babysea` workflow repository.
 
 ## [2.0.0] - 2026-05-27

@@ -127,11 +127,12 @@ BabySea OSS projects are published into three status levels:
    - [Webhooks](#webhooks)
    - [API key scopes](#api-key-scopes)
    - [Response envelope](#response-envelope)
-9. [Version surface](#9-version-surface)
-10. [Community](#10-community)
+9. [Status](#9-status)
+10. [Security and Compliance](#10-security-and-compliance)
+11. [Community](#11-community)
     - [Resources](#resources)
     - [Contributing](#contributing)
-11. [License](#11-license)
+12. [License](#12-license)
 
 ---
 
@@ -993,7 +994,19 @@ Current SDK surface:
 - [x] Lcov package coverage and Codecov upload when repository credentials are available
 - [x] Runtime examples for Node.js, Next.js, Edge, Cloudflare Workers, and browser read-only flows
 
-## 10. Community
+## 10. Security and Compliance
+
+BabySea SDK publishes its trust signals through public GitLab and GitHub checks so contributors can inspect the actual CI configuration, jobs, and reports.
+
+| Signal                      | Coverage                                                                                                                                                          |
+| :-------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GitLab application security | SAST, Advanced SAST, IaC scanning, Dependency Scanning, Secret Detection, Code Quality, guarded Container Scanning, package audit, and redacted Gitleaks.         |
+| License compliance          | Dependency license inventory is reviewed against [LICENSES.md](LICENSES.md); approval policies are deferred until the GitLab group has enough eligible reviewers. |
+| Repository guards           | GitHub CodeQL, Package Check, Sentry Project Check, CircleCI, and Codecov stay public for cross-provider verification.                                            |
+
+Container scanning is present in CI but only runs when `CS_IMAGE` is configured for a repository that publishes a container image.
+
+## 11. Community
 
 ### Resources
 
@@ -1038,6 +1051,6 @@ We welcome PRs, issues, and design discussion. See [CONTRIBUTING.md](CONTRIBUTIN
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes.
 
-## 11. License
+## 12. License
 
 [Apache License 2.0](LICENSE). Use it, fork it, ship it. Just keep the notice.

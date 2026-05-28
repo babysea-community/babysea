@@ -1,8 +1,10 @@
 include:
   - template: Jobs/SAST.gitlab-ci.yml
+  - template: Jobs/SAST-IaC.gitlab-ci.yml
   - template: Jobs/Dependency-Scanning.gitlab-ci.yml
   - template: Jobs/Secret-Detection.gitlab-ci.yml
   - template: Jobs/Code-Quality.gitlab-ci.yml
+  - template: Jobs/Container-Scanning.gitlab-ci.yml
 
 stages:
   - verify
@@ -21,11 +23,15 @@ workflow:
 
 variables:
   GIT_DEPTH: '0'
+  AST_ENABLE_MR_PIPELINES: 'true'
   GITLAB_ADVANCED_SAST_ENABLED: 'true'
+  SECURE_LOG_LEVEL: warn
   SAST_EXCLUDED_PATHS: '.pnpm-store,coverage,dist,docs,examples,node_modules,public'
   DS_EXCLUDED_PATHS: '.pnpm-store,coverage,dist,docs,examples,node_modules,public'
   SECRET_DETECTION_EXCLUDED_PATHS: '.pnpm-store,coverage,dist,docs,examples,node_modules,public'
   SECRET_DETECTION_HISTORIC_SCAN: 'true'
+  CONTAINER_SCANNING_DISABLED: 'false'
+  CS_DISABLE_DEPENDENCY_LIST: 'false'
   PNPM_INSTALL_FLAGS: --ignore-scripts
 
 default:
@@ -35,6 +41,14 @@ default:
     when:
       - runner_system_failure
       - stuck_or_timeout_failure
+
+container_scanning:
+  stage: security
+  rules:
+    - if: '$CONTAINER_SCANNING_DISABLED == "true" || $CONTAINER_SCANNING_DISABLED == "1"'
+      when: never
+    - if: '$CS_IMAGE'
+    - when: never
 
 .pnpm-job:
   image: node:22-bookworm
