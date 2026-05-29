@@ -1,7 +1,7 @@
 {
   "name": "babysea",
   "version": "2.0.0",
-  "description": "Production TypeScript SDK for the BabySea execution control plane for generative media. One API, one schema, one lifecycle across image and video inference providers.",
+  "description": "Production TypeScript SDK for the BabySea execution control plane for generative media.",
   "keywords": [
     "babysea",
     "open-source",

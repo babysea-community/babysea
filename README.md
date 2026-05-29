@@ -1,28 +1,23 @@
 <div align="center">
 
-<p>
-  <img src="public/icon.png" width="120" alt="BabySea SDK icon" />
-</p>
+<img src="public/icon.png" width="120" alt="BabySea SDK icon" />
 
-<h1>
-  BabySea SDK
-</h1>
+# BabySea SDK
 
-<p>
-  Production TypeScript SDK for the BabySea execution control plane for generative media. One API, one schema, one lifecycle across image and video inference providers.
-</p>
+Production TypeScript SDK for the BabySea execution control plane for generative media.
 
-<p>
-  <strong>Works across Node.js + Edge runtimes + browsers</strong>
-</p>
+### One API • One schema • One lifecycle
 
 <br />
 
 <strong>Quick links</strong>
 
-[![BabySea Website](https://custom-icon-badges.demolab.com/badge/babysea-website-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai)
-[![BabySea Docs](https://custom-icon-badges.demolab.com/badge/babysea-docs-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://docs.babysea.ai)
-[![BabySea Playground](https://custom-icon-badges.demolab.com/badge/babysea-playground-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://us.babysea.ai/playground)
+[![BabySea Website](https://custom-icon-badges.demolab.com/badge/visit-website-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai)
+[![BabySea Templates](https://custom-icon-badges.demolab.com/badge/find-templates-E11D48?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai/templates)
+[![BabySea Playground](https://custom-icon-badges.demolab.com/badge/try-playground-2563EB?style=for-the-badge&logo=babysea&logoColor=white)](https://us.babysea.ai/playground)
+[![BabySea Model Schema](https://custom-icon-badges.demolab.com/badge/explore-model_schema-7C3AED?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai/model-schema)
+[![BabySea FAQs](https://custom-icon-badges.demolab.com/badge/see-faqs-DB2777?style=for-the-badge&logo=babysea&logoColor=white)](https://us.babysea.ai/playground)
+[![BabySea Docs](https://custom-icon-badges.demolab.com/badge/learn-docs-EA580C?style=for-the-badge&logo=babysea&logoColor=white)](https://docs.babysea.ai)
 
 <br/>
 
@@ -49,9 +44,9 @@
 
 [![npm](https://img.shields.io/npm/v/babysea?style=for-the-badge&color=CB3837&logo=npm&logoColor=white)](https://www.npmjs.com/package/babysea)
 [![Node.js](https://img.shields.io/badge/Node.js-22%2B-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
-[![Edge](https://custom-icon-badges.demolab.com/badge/runtime-edge-000000?style=for-the-badge&logo=cloud&logoColor=white)](#configuration)
-[![Browser](https://custom-icon-badges.demolab.com/badge/runtime-browser-3399CC?style=for-the-badge&logo=browser&logoColor=white)](#configuration)
 [![Zero Dependencies](https://custom-icon-badges.demolab.com/badge/dependencies-zero-3450D1?style=for-the-badge&logo=pulse&logoColor=white)](#configuration)
+[![Edge](https://custom-icon-badges.demolab.com/badge/edge-000000?style=for-the-badge&logo=cloud&logoColor=white)](#configuration)
+[![Browser](https://custom-icon-badges.demolab.com/badge/browser-3399CC?style=for-the-badge&logo=browser&logoColor=white)](#configuration)
 [![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
 <br />
@@ -90,7 +85,7 @@ BabySea OSS projects are published into three status levels:
 | **Production** | Working plus a hardened public runtime contract. Validated against a stated infrastructure stack with deterministic behavior, explicit failure modes, and a documented upgrade path. |
 | **Alpha**      | Early-stage implementation. Core structure exists but some capabilities may be incomplete, undocumented, or subject to breaking changes. Not recommended for production deployments. |
 
-`babysea` is a **production** OSS SDK. It is built and validated against the BabySea execution control plane for image and video generation across Node.js, Edge runtimes, and browsers. See [`CHANGELOG.md`](CHANGELOG.md).
+See [`CHANGELOG.md`](CHANGELOG.md) to track releases and public contract changes.
 
 ## Table of contents
 
