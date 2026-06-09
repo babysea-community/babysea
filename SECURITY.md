@@ -1,33 +1,68 @@
 # Security policy
 
+This project is a public BabySea OSS repository. Its security boundary, runtime model, supported deployment mode, and expected validation steps are defined in [README.md](README.md).
+
 ## Reporting vulnerabilities
 
-Please report suspected vulnerabilities privately to [dev@babysea.ai](mailto:dev@babysea.ai). Do not open public issues for secrets, authentication bypasses, webhook verification issues, scoped-key bypasses, or request-signing problems.
+Please report vulnerabilities privately through GitHub's **Report a vulnerability** flow on this project's public repository. If that flow is unavailable, contact the maintainers at `dev@babysea.ai`.
 
-Include:
+Do not open public issues for suspected vulnerabilities or exposed secrets.
 
-- affected SDK version
-- runtime environment
-- reproduction steps
-- expected and actual behavior
-- impact assessment
+Useful reports include the affected route, package, workflow, file, command, schema, or deployment mode; reproduction steps; expected impact; and whether any secret, private data, prompt, generated media, or signed URL may have been exposed. Do not include real API keys, private prompts, reference media, generated media, customer data, signed URLs, or exploit payloads in public spaces.
 
-## SDK security boundaries
+## What to report
 
-- Keep full-access API keys server-side.
-- Use scoped keys for browser, read-only, monitoring, or generate-only flows.
-- Verify BabySea webhooks with the raw request body and `X-BabySea-Signature`.
-- Store webhook secrets and API keys in deployment secrets, not in source code.
-- Use `Idempotency-Key` for generation writes that may be retried.
-- Log `request_id`, structured error code, and retryability metadata instead of prompts, secret URLs, API keys, or webhook secrets.
-- Keep Package Check green: SDK linting, type checks, example type checks, lcov coverage, formatting, and package dry-run should pass before publishing.
+Please report issues such as:
 
-## Sentry code guard
+- Authentication, authorization, tenancy, or scope bypass.
+- Exposure of provider credentials, platform tokens, database secrets, webhook secrets, callback secrets, npm tokens, GitHub or GitLab tokens, Sentry tokens, signing keys, or other deployment secrets.
+- Webhook signature bypass, replay, or delivery deduplication failures.
+- Unsafe callback signing, callback payload tampering, or untrusted redirect behavior.
+- Cross-user disclosure of prompts, reference media, generated media, request metadata, logs, account data, or private operational details.
+- Server-side request forgery, unsafe URL handling, path traversal, command injection, template injection, or unsafe file handling.
+- Provider-mode, region, endpoint, or adapter confusion that could send data to the wrong external service or leak raw provider parameters.
+- Supply-chain issues involving dependencies, generated artifacts, CI workflows, release scripts, or package contents.
 
-The public SDK repository is connected to a private, repository-specific Sentry project for repository ownership, Seer-assisted review, and issue routing. The Sentry organization slug and project slug are intentionally not committed to this public repo.
+## Secret handling
 
-This repo keeps Sentry as a repository guardrail, not runtime telemetry. It ships `scripts/sentry-project-check.mjs` and a scheduled `Sentry Project Check` workflow that verifies the configured project slug, active status, `other` platform, and Code Guard ownership rules using GitHub Actions secrets only. Use `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, and `SENTRY_PROJECT` as repository secrets. Local `.sentryclirc` files are ignored by git. No Sentry SDK, DSN, tracing, error-reporting client, or Sentry runtime telemetry is included in this package; SDK diagnostic headers remain limited to package/runtime metadata and never include prompts or request bodies.
+- Use `.env.example` as the source of truth for runtime, build, CI, provider, webhook, callback, cron, rate-limit, analytics, and monitoring variables when this project has environment configuration.
+- Keep every secret server-side unless `.env.example` explicitly marks the value as public.
+- Keep provider keys, deployment tokens, database credentials, webhook secrets, signed URLs, private prompts, private media, and customer data out of logs, screenshots, chats, issues, pull requests, fixtures, generated files, and package artifacts.
+- Treat provider region, base URL, model routing, storage, queue, and integration settings as deployment configuration unless [README.md](README.md) intentionally documents them as public behavior.
+- Rotate any key that appears in logs, screenshots, chats, issues, pull requests, deployment output, CI artifacts, or generated package contents.
 
-## Supported versions
+## Runtime boundary
 
-Security fixes target the latest published `babysea` SDK version. Upgrade promptly when security releases are published.
+This file is intentionally project-neutral. The exact runtime boundary depends on the project type:
+
+| Project type | Security focus                                                                                   |
+| :----------- | :----------------------------------------------------------------------------------------------- |
+| SDK          | Package contents, exported API contract, dependency surface, local data handling, and examples.  |
+| Primitive    | Infrastructure boundary, data contracts, operational credentials, storage, queues, and services. |
+| Starter      | Application auth, route handlers, public environment values, webhooks, callbacks, and deploys.   |
+| Docs         | Public content, examples, links, generated artifacts, and secret-free publishing workflows.      |
+
+Follow [README.md](README.md), [CONTRIBUTING.md](CONTRIBUTING.md), and any project-specific [AGENTS.md](AGENTS.md) for the concrete boundary.
+
+## Public disclosure rules
+
+- Do not post vulnerability details publicly until maintainers have confirmed a fix or disclosure plan.
+- Do not include exploit payloads that could be immediately reused against public deployments.
+- Do not include real secrets, private URLs, private prompts, private reference media, generated media, customer data, or logs containing personal data.
+- Use private maintainer channels when a reproduction requires sensitive material.
+
+## Operational hardening
+
+- Run the validation commands documented in [README.md](README.md) before deploys, releases, and security-sensitive changes.
+- Keep public environment variables limited to values that are safe for browsers or public clients.
+- Prefer scoped credentials, least-privilege tokens, short-lived keys, and separate credentials per environment.
+- Validate untrusted input before storage, network calls, provider SDKs, shell commands, template rendering, or generated artifacts.
+- Keep CI logs, package previews, and release artifacts free of secrets and private data.
+- Review [LICENSES.md](LICENSES.md) when dependencies or redistributed content change.
+
+## Related documents
+
+- [CONTRIBUTING.md](CONTRIBUTING.md) explains how to propose safe changes.
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) explains expected community behavior.
+- [LICENSES.md](LICENSES.md) explains dependency license review.
+- [CHANGELOG.md](CHANGELOG.md) records user-visible security and behavior changes.

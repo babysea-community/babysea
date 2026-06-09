@@ -46,7 +46,7 @@ Read CONTRIBUTING.md and SECURITY.md before opening a PR.
 <!--
 Call out anything reviewers should look at carefully:
 - New dependencies, network calls, or secrets handling
-- Auth, authorization, or RLS changes
+- Auth, authorization, or database access changes
 - Input validation and untrusted data paths
 - Logging that could leak PII or credentials
 Write "None" if there are no security implications.
@@ -62,5 +62,5 @@ Write "None" if there are no security implications.
 - [ ] I have read [`CONTRIBUTING.md`](../CONTRIBUTING.md) and [`SECURITY.md`](../SECURITY.md)
 - [ ] Commits are signed and use a verified author identity
 - [ ] No secrets, tokens, real customer data, or private internal URLs are included
-- [ ] Public API changes (schemas, exports, CLI flags, env vars) are documented and versioned per SemVer
+- [ ] Public contract changes (APIs, schemas, CLI flags, env vars, deployment behavior) are documented and versioned per SemVer
 - [ ] This change is within the project's documented scope (see `README.md` and `AGENTS.md`)

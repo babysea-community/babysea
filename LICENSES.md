@@ -1,6 +1,6 @@
 # License Compliance
 
-BabySea SDK is Apache-2.0. Dependency license review is part of the public supply-chain posture for the standalone SDK repository.
+This project is distributed under the license in [LICENSE](LICENSE). Dependency license review is part of the public supply-chain posture for the standalone repository.
 
 ## Allowed Licenses
 
@@ -23,7 +23,8 @@ The following findings require maintainer review before they are accepted into a
 - Unknown or unclassified license metadata.
 - LGPL-3.0-or-later or other weak-copyleft dependencies.
 - CC-BY-4.0 or other attribution-focused content licenses.
-- Any dependency that bundles native binaries, generated assets, model data, or redistributed third-party content.
+- Any dependency that bundles native binaries, generated assets, model data, datasets, fonts, media, or redistributed third-party content.
+- Any generated file or vendored artifact whose source, license, or generation process is unclear.
 
 ## Denied By Default
 
@@ -32,9 +33,26 @@ The following licenses or terms are denied unless maintainers explicitly approve
 - AGPL, GPL, SSPL, or network-copyleft runtime dependencies.
 - Proprietary, commercial-only, non-redistributable, source-unavailable, or field-of-use restricted dependencies.
 - Dependencies that require undisclosed attribution, tracking, telemetry, or data sharing.
+- Content or model assets that cannot be redistributed in a public repository.
 
-## Public GitLab Signals
+## Dependency Changes
 
-The GitLab pipeline runs SAST, Advanced SAST, IaC scanning, Dependency Scanning, Secret Detection, Code Quality, guarded Container Scanning, package audit, and redacted Gitleaks checks. GitLab Dependency Scanning provides the dependency and license inventory that maintainers use for license triage.
+When adding or updating dependencies:
 
-Merge request approval policies are not enforced until the GitLab group has at least two eligible reviewers. Until then, license findings are documented and reviewed through normal maintainer review.
+- Explain why the dependency is needed in the pull request.
+- Prefer small, maintained packages with clear license metadata.
+- Avoid adding dependencies for behavior that the standard library or existing project tooling already covers.
+- Run the package manager audit command documented in [README.md](README.md) or the project workflow.
+- Update [CHANGELOG.md](CHANGELOG.md) when dependency changes affect users, security posture, package size, runtime support, or release artifacts.
+
+## Public CI Signals
+
+This project may use GitHub and GitLab security workflows such as CodeQL, SAST, IaC scanning, Dependency Scanning, Secret Detection, Code Quality, package audit, container scanning, DAST, and redacted Gitleaks checks. Not every project type enables every signal.
+
+Treat CI findings as review inputs. If a finding is a false positive, document the reason in the pull request or the relevant security workflow configuration.
+
+## Related documents
+
+- [CONTRIBUTING.md](CONTRIBUTING.md) explains how dependency changes should be proposed.
+- [SECURITY.md](SECURITY.md) explains how to handle vulnerabilities and secret exposure.
+- [README.md](README.md) defines this project's supported runtime and package contract.

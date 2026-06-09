@@ -7,7 +7,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '27 3 * * 1'
+    - cron: '31 3 * * 1'
 
 permissions:
   security-events: write
@@ -25,9 +25,9 @@ jobs:
 
       - uses: github/codeql-action/init@v4
         with:
-          languages: javascript-typescript
+          languages: javascript-typescript,python
           build-mode: none
 
       - uses: github/codeql-action/analyze@v4
         with:
-          category: /language:javascript-typescript
+          category: /language:javascript-typescript-python

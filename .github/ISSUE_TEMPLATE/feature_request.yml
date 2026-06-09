@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for the suggestion. Please search [existing issues](../) first to avoid duplicates, and read the project [README.md](../../README.md) and [AGENTS.md](../../AGENTS.md) `Scope` section to confirm this fits the project's purpose.
+        Thanks for the suggestion. Please search existing issues first, and read README.md to confirm this fits the project's documented scope.
 
   - type: textarea
     id: problem
@@ -20,7 +20,7 @@ body:
     id: proposal
     attributes:
       label: Proposed solution
-      description: How would you like this to work? Include API sketches, schema changes, or UX notes if relevant.
+      description: How would you like this to work? Include API sketches, data-contract changes, UX notes, or deployment details if relevant.
     validations:
       required: true
 
@@ -35,7 +35,7 @@ body:
     attributes:
       label: Component / area
       description: Which part of the project would this touch?
-      placeholder: "e.g. TypeScript SDK, docs, examples"
+      placeholder: "e.g. SDK, primitive, starter app, CLI, docs, CI"
 
   - type: textarea
     id: context
@@ -44,11 +44,11 @@ body:
       description: Links, references, prior art, related issues, or any other supporting information.
 
   - type: checkboxes
-    id: terms
+    id: checks
     attributes:
       label: Checks
       options:
         - label: I searched existing issues and confirmed this is not a duplicate.
           required: true
-        - label: This request is within the project's documented scope (see [README.md](../../README.md) and [AGENTS.md](../../AGENTS.md)).
+        - label: This request is within the project's documented scope (see README.md).
           required: true
