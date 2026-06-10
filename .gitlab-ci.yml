@@ -102,9 +102,15 @@ secret_detection:
         exit 1
       fi
 
+      case "$js_dir" in
+        /*) js_abs_dir="$js_dir" ;;
+        *) js_abs_dir="$CI_PROJECT_DIR/$js_dir" ;;
+      esac
+
       echo 'JS_SKIP=0' > .ci-js.env
       echo "JS_DIR=$js_dir" >> .ci-js.env
-      cd "$js_dir"
+      echo "JS_ABS_DIR=$js_abs_dir" >> .ci-js.env
+      cd "$js_abs_dir"
 
       if [ -f pnpm-lock.yaml ]; then
         corepack enable
@@ -122,6 +128,8 @@ secret_detection:
         pnpm install $PNPM_INSTALL_FLAGS
         echo 'JS_PM=pnpm' >> "$CI_PROJECT_DIR/.ci-js.env"
       fi
+
+      cd "$CI_PROJECT_DIR"
 
 .python-job:
   image: python:3.12-bookworm
@@ -150,9 +158,15 @@ secret_detection:
         exit 0
       fi
 
+      case "$python_dir" in
+        /*) python_abs_dir="$python_dir" ;;
+        *) python_abs_dir="$CI_PROJECT_DIR/$python_dir" ;;
+      esac
+
       echo 'PYTHON_SKIP=0' > .ci-python.env
       echo "PYTHON_DIR=$python_dir" >> .ci-python.env
-      cd "$python_dir"
+      echo "PYTHON_ABS_DIR=$python_abs_dir" >> .ci-python.env
+      cd "$python_abs_dir"
       python -m pip install --upgrade pip
 
       if [ -f pyproject.toml ]; then
@@ -162,6 +176,8 @@ secret_detection:
       elif [ -f requirements.txt ]; then
         python -m pip install -r requirements.txt
       fi
+
+      cd "$CI_PROJECT_DIR"
 
 verify:metadata:
   stage: verify
@@ -192,9 +208,9 @@ verify:javascript:
   script:
     - |
       set -eu
-      . .ci-js.env
+      . "$CI_PROJECT_DIR/.ci-js.env"
       if [ "${JS_SKIP:-0}" = '1' ]; then exit 0; fi
-      cd "$JS_DIR"
+      cd "$JS_ABS_DIR"
       for script_name in format lint typecheck check; do
         if node -e "const pkg=require('./package.json'); process.exit(pkg.scripts?.[process.argv[1]] ? 0 : 1)" "$script_name"; then
           "$JS_PM" run "$script_name"
@@ -210,9 +226,9 @@ verify:python:
   script:
     - |
       set -eu
-      . .ci-python.env
+      . "$CI_PROJECT_DIR/.ci-python.env"
       if [ "${PYTHON_SKIP:-0}" = '1' ]; then exit 0; fi
-      cd "$PYTHON_DIR"
+      cd "$PYTHON_ABS_DIR"
       python -m compileall .
       if python -c 'import ruff' >/dev/null 2>&1; then python -m ruff check .; else echo 'ruff is not installed; skipping.'; fi
       if python -c 'import pyright' >/dev/null 2>&1; then python -m pyright; else echo 'pyright is not installed; skipping.'; fi
@@ -225,10 +241,10 @@ test:javascript:
   script:
     - |
       set -eu
-      . .ci-js.env
+      . "$CI_PROJECT_DIR/.ci-js.env"
       mkdir -p coverage
       if [ "${JS_SKIP:-0}" = '1' ]; then exit 0; fi
-      cd "$JS_DIR"
+      cd "$JS_ABS_DIR"
       if node -e "const pkg=require('./package.json'); process.exit(pkg.scripts?.['test:coverage'] ? 0 : 1)"; then
         "$JS_PM" run test:coverage
       elif node -e "const pkg=require('./package.json'); process.exit(pkg.scripts?.test ? 0 : 1)"; then
@@ -250,9 +266,9 @@ test:python:
   script:
     - |
       set -eu
-      . .ci-python.env
+      . "$CI_PROJECT_DIR/.ci-python.env"
       if [ "${PYTHON_SKIP:-0}" = '1' ]; then exit 0; fi
-      cd "$PYTHON_DIR"
+      cd "$PYTHON_ABS_DIR"
       test_dir=''
       for candidate in tests test tests/python ../tests/python ../../tests/python; do
         if [ -d "$candidate" ]; then test_dir="$candidate"; break; fi
@@ -267,9 +283,9 @@ build:javascript:
   script:
     - |
       set -eu
-      . .ci-js.env
+      . "$CI_PROJECT_DIR/.ci-js.env"
       if [ "${JS_SKIP:-0}" = '1' ]; then exit 0; fi
-      cd "$JS_DIR"
+      cd "$JS_ABS_DIR"
       if node -e "const pkg=require('./package.json'); process.exit(pkg.scripts?.build ? 0 : 1)"; then "$JS_PM" run build; else echo 'No build script; skipping.'; fi
       if node -e "const pkg=require('./package.json'); process.exit(pkg.scripts?.['exports:check'] ? 0 : 1)"; then "$JS_PM" run exports:check; else echo 'No exports:check script; skipping.'; fi
       if node -e "const pkg=require('./package.json'); process.exit(pkg.scripts?.['pack:dry-run'] ? 0 : 1)"; then "$JS_PM" run pack:dry-run; elif [ -f package.json ]; then npm pack --dry-run; fi
@@ -281,9 +297,9 @@ build:python:
   script:
     - |
       set -eu
-      . .ci-python.env
+      . "$CI_PROJECT_DIR/.ci-python.env"
       if [ "${PYTHON_SKIP:-0}" = '1' ]; then exit 0; fi
-      cd "$PYTHON_DIR"
+      cd "$PYTHON_ABS_DIR"
       if [ ! -f pyproject.toml ]; then echo 'No pyproject.toml; skipping Python package build.'; exit 0; fi
       python -m pip install build
       python -m build --sdist --wheel
@@ -297,9 +313,9 @@ dependency:audit:javascript:
   script:
     - |
       set -eu
-      . .ci-js.env
+      . "$CI_PROJECT_DIR/.ci-js.env"
       if [ "${JS_SKIP:-0}" = '1' ]; then exit 0; fi
-      cd "$JS_DIR"
+      cd "$JS_ABS_DIR"
       if [ "$JS_PM" = 'pnpm' ]; then pnpm audit --prod --audit-level=high; else npm audit --omit=dev --audit-level=high; fi
 
 coverage:upload:
