@@ -58,14 +58,7 @@ container_scanning:
 .javascript-job:
   image: node:24-bookworm
   cache:
-    key:
-      files:
-        - package.json
-        - pnpm-lock.yaml
-        - package-lock.json
-        - client/typescript/package.json
-        - client/typescript/package-lock.json
-      prefix: javascript-${CI_COMMIT_REF_SLUG}
+    key: javascript-${CI_COMMIT_REF_SLUG}
     paths:
       - .npm/
       - .pnpm-store/
@@ -117,15 +110,7 @@ container_scanning:
 .python-job:
   image: python:3.12-bookworm
   cache:
-    key:
-      files:
-        - pyproject.toml
-        - requirements.txt
-        - requirements-dev.txt
-        - client/python/pyproject.toml
-        - client/python/requirements.txt
-        - client/python/requirements-dev.txt
-      prefix: python-${CI_COMMIT_REF_SLUG}
+    key: python-${CI_COMMIT_REF_SLUG}
     paths:
       - .cache/pip/
       - client/python/.cache/pip/
@@ -136,10 +121,10 @@ container_scanning:
       set -eu
       python_dir="${PYTHON_PACKAGE_DIR:-}"
       if [ -z "$python_dir" ]; then
-        if [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f requirements-dev.txt ]; then
-          python_dir="."
-        elif [ -f client/python/pyproject.toml ] || [ -f client/python/requirements.txt ] || [ -f client/python/requirements-dev.txt ]; then
+        if [ -f client/python/pyproject.toml ] || [ -f client/python/requirements.txt ] || [ -f client/python/requirements-dev.txt ]; then
           python_dir="client/python"
+        elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f requirements-dev.txt ]; then
+          python_dir="."
         fi
       fi
 
