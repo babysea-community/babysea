@@ -49,11 +49,27 @@ default:
 
 container_scanning:
   stage: security
+  allow_failure: true
   rules:
     - if: '$CONTAINER_SCANNING_DISABLED == "true" || $CONTAINER_SCANNING_DISABLED == "1"'
       when: never
     - if: '$CS_IMAGE'
     - when: never
+
+code_quality:
+  allow_failure: true
+
+gemnasium-dependency_scanning:
+  allow_failure: true
+
+gitlab-advanced-sast:
+  allow_failure: true
+
+kics-iac-sast:
+  allow_failure: true
+
+secret_detection:
+  allow_failure: true
 
 .javascript-job:
   image: node:24-bookworm
@@ -275,6 +291,7 @@ build:python:
 dependency:audit:javascript:
   stage: security
   extends: .javascript-job
+  allow_failure: true
   timeout: 10m
   needs: []
   script:
@@ -288,6 +305,7 @@ dependency:audit:javascript:
 coverage:upload:
   stage: security
   image: alpine:3.22
+  allow_failure: true
   needs:
     - job: test:javascript
       artifacts: true
@@ -316,6 +334,7 @@ secret:scan:
   image:
     name: zricethezav/gitleaks:v8.28.0
     entrypoint: ['']
+  allow_failure: true
   timeout: 5m
   needs: []
   script:

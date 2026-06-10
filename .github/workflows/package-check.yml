@@ -100,7 +100,11 @@ jobs:
 
           mkdir -p "$root_dir/coverage"
           if [[ -f coverage/lcov.info ]]; then
-            cp coverage/lcov.info "$root_dir/coverage/lcov.info"
+            coverage_source="$(cd coverage && pwd -P)/lcov.info"
+            coverage_target="$(cd "$root_dir/coverage" && pwd -P)/lcov.info"
+            if [[ "$coverage_source" != "$coverage_target" ]]; then
+              cp "$coverage_source" "$coverage_target"
+            fi
           fi
       - name: Upload coverage reports to Codecov
         if: ${{ hashFiles('coverage/lcov.info') != '' && github.actor != 'dependabot[bot]' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) }}
