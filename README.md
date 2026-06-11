@@ -4,7 +4,7 @@
 
 # BabySea SDK
 
-Production TypeScript SDK for the BabySea execution control plane for generative media.
+Execution control plane SDK for generative media.
 
 ### One API. One schema. One lifecycle.
 
@@ -32,7 +32,7 @@ Production TypeScript SDK for the BabySea execution control plane for generative
 <strong>Checks</strong>
 
 [![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/babysea?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/babysea/-/commits/main)
-[![CircleCI](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fcircleci%2F2uTLcwc4naeNuKDP41es88%2FJ9zUiRVPXjfZ9YvzjBpnvo%2Ftree%2Fmain%3Flimit%3D1&query=%24%5B0%5D.status&style=for-the-badge&logo=circleci&logoColor=white&label=circleci&color=003740)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/J9zUiRVPXjfZ9YvzjBpnvo/tree/main)
+[![CircleCI](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fcircleci%2F2uTLcwc4naeNuKDP41es88%2FPgdP4SEoNsCeJGSKgZ7Shq%2Ftree%2Fmain%3Flimit%3D1&query=%24%5B0%5D.status&style=for-the-badge&logo=circleci&logoColor=white&label=circleci&color=003740)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/PgdP4SEoNsCeJGSKgZ7Shq/tree/main)
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/babysea?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=FDUBOJu692)](https://codecov.io/github/babysea-community/babysea)
 [![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white&color=181225)](https://github.com/babysea-community/babysea/actions/workflows/sentry-check.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/codeql.yml)
