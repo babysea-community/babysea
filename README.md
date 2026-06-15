@@ -24,7 +24,7 @@ Execution control plane SDK for generative media.
 <strong>Project details</strong>
 
 [![BabySea OSS SDK](https://custom-icon-badges.demolab.com/badge/oss-sdk-7C3AED?style=for-the-badge&logo=babysea&logoColor=white)](#babysea-oss-taxonomy)
-[![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/oss_status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
+[![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
 [![License](https://custom-icon-badges.demolab.com/badge/license-apache_2.0-059669?style=for-the-badge&logo=apache&logoColor=white)](LICENSE)
 
 <br/>
@@ -32,9 +32,7 @@ Execution control plane SDK for generative media.
 <strong>Checks</strong>
 
 [![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/babysea?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/babysea/-/commits/main)
-[![CircleCI](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fcircleci%2F2uTLcwc4naeNuKDP41es88%2FPgdP4SEoNsCeJGSKgZ7Shq%2Ftree%2Fmain%3Flimit%3D1&query=%24%5B0%5D.status&style=for-the-badge&logo=circleci&logoColor=white&label=circleci&color=003740)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/PgdP4SEoNsCeJGSKgZ7Shq/tree/main)
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/babysea?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=FDUBOJu692)](https://codecov.io/github/babysea-community/babysea)
-[![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white&color=181225)](https://github.com/babysea-community/babysea/actions/workflows/sentry-check.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/codeql.yml)
 [![Package](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/package-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/package-check.yml)
 
@@ -43,7 +41,7 @@ Execution control plane SDK for generative media.
 <strong>Runtime</strong>
 
 [![npm](https://img.shields.io/npm/v/babysea?style=for-the-badge&color=CB3837&logo=npm&logoColor=white)](https://www.npmjs.com/package/babysea)
-[![Node.js](https://img.shields.io/badge/Node.js-22%2B-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![Node.js](https://img.shields.io/badge/Node.js-24%2B-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
 [![Zero Dependencies](https://custom-icon-badges.demolab.com/badge/dependencies-zero-3450D1?style=for-the-badge&logo=pulse&logoColor=white)](#configuration)
 [![Edge](https://custom-icon-badges.demolab.com/badge/edge-000000?style=for-the-badge&logo=cloud&logoColor=white)](#configuration)
 [![Browser](https://custom-icon-badges.demolab.com/badge/browser-3399CC?style=for-the-badge&logo=browser&logoColor=white)](#configuration)
@@ -75,9 +73,9 @@ BabySea open source projects are organized into three categories:
 
 BabySea OSS projects are published into three status levels:
 
-[![BabySea OSS Status Working](https://custom-icon-badges.demolab.com/badge/oss_status-working-DB2777?style=for-the-badge&logo=babysea&logoColor=white)](#status)
-[![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/oss_status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
-[![BabySea OSS Status Alpha](https://custom-icon-badges.demolab.com/badge/oss_status-alpha-D97706?style=for-the-badge&logo=babysea&logoColor=white)](#status)
+[![BabySea OSS Status Working](https://custom-icon-badges.demolab.com/badge/status-working-DB2777?style=for-the-badge&logo=babysea&logoColor=white)](#status)
+[![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
+[![BabySea OSS Status Alpha](https://custom-icon-badges.demolab.com/badge/status-alpha-D97706?style=for-the-badge&logo=babysea&logoColor=white)](#status)
 
 | Status         | Description                                                                                                                                                                          |
 | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -191,7 +189,6 @@ The SDK supports Node.js 22+, Edge runtimes, browsers, Bun, Deno-compatible fetc
 - Not a direct provider abstraction. The SDK talks to BabySea's control plane, not provider APIs.
 - Not a browser-first write-key pattern. Production generation writes should normally run from your backend.
 - Not a replacement for webhook idempotency in your app. Store `webhook_delivery_id` when side effects must be deduplicated.
-- Not a Sentry runtime telemetry integration. Sentry code guard is repository-only; no Sentry SDK, DSN, tracing, or error-reporting client is bundled.
 
 The SDK is intentionally small: it normalizes client calls, verifies webhook signatures, retries safe failures, and surfaces structured API responses.
 
@@ -440,15 +437,14 @@ For incident-oriented recipes covering `429`s, insufficient credits, provider fa
 
 ### Security and enterprise controls
 
-| Control                 | Details                                                                                                                                                                                                     |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Scoped API keys         | Use `generate_only`, `read_only`, `monitor_only`, or custom scopes to enforce least privilege. Keep write-capable keys server-side.                                                                         |
-| Webhook verification    | `verifyWebhook()` validates HMAC-SHA256 signatures with timestamp replay protection and timing-safe comparison.                                                                                             |
-| Idempotent generation   | `Idempotency-Key` prevents duplicate generations during safe retries and exposes replay state in the SDK response.                                                                                          |
-| Regional endpoints      | `us`, `eu`, and `jp` endpoints keep requests pinned to the region you configure.                                                                                                                            |
-| No runtime dependencies | No provider SDKs, queue clients, storage clients, or framework adapters are bundled.                                                                                                                        |
-| Minimal SDK telemetry   | SDK headers contain package/runtime metadata only; prompts, request bodies, and PII are not added to telemetry headers.                                                                                     |
-| Sentry code guard       | The public SDK repo uses a private, repository-specific Sentry project for ownership, Seer, and scheduled project-wiring checks; no Sentry runtime SDK, DSN, tracing, or error-reporting client is bundled. |
+| Control                 | Details                                                                                                                             |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Scoped API keys         | Use `generate_only`, `read_only`, `monitor_only`, or custom scopes to enforce least privilege. Keep write-capable keys server-side. |
+| Webhook verification    | `verifyWebhook()` validates HMAC-SHA256 signatures with timestamp replay protection and timing-safe comparison.                     |
+| Idempotent generation   | `Idempotency-Key` prevents duplicate generations during safe retries and exposes replay state in the SDK response.                  |
+| Regional endpoints      | `us`, `eu`, and `jp` endpoints keep requests pinned to the region you configure.                                                    |
+| No runtime dependencies | No provider SDKs, queue clients, storage clients, or framework adapters are bundled.                                                |
+| Minimal SDK telemetry   | SDK headers contain package/runtime metadata only; prompts, request bodies, and PII are not added to telemetry headers.             |
 
 Browser runtime support is available, but production generation writes should normally run from your backend with a server-side API key. If you call BabySea from browser code, issue the narrowest possible scoped key for that use case.
 
@@ -993,58 +989,17 @@ Current SDK surface:
 
 BabySea SDK publishes its trust signals through public GitLab and GitHub checks so contributors can inspect the actual CI configuration, jobs, and reports.
 
-| Signal                      | Coverage                                                                                                                                                          |
-| :-------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GitLab application security | SAST, Advanced SAST, IaC scanning, Dependency Scanning, Secret Detection, Code Quality, guarded Container Scanning, package audit, and redacted Gitleaks.         |
-| License compliance          | Dependency license inventory is reviewed against [LICENSES.md](LICENSES.md); approval policies are deferred until the GitLab group has enough eligible reviewers. |
-| Repository guards           | GitHub CodeQL, Package Check, Sentry Project Check, CircleCI, and Codecov stay public for cross-provider verification.                                            |
-
-Container scanning is present in CI but only runs when `CS_IMAGE` is configured for a repository that publishes a container image.
-
 ## 11. Community
 
-### Resources
+### Who's using it
 
-#### Product
+- **[BabySea](https://babysea.ai)**: execution control plane for generative media.
 
-| Page                                                         | Description                                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------------- |
-| [docs.babysea.ai](https://docs.babysea.ai)                   | Full documentation: setup, dashboard, API reference, and changelog. |
-| [babysea.ai/model-pricing](https://babysea.ai/model-pricing) | Per-model pricing for every image and video model.                  |
-| [babysea.ai/model-schema](https://babysea.ai/model-schema)   | Per-model input schema and runnable code samples.                   |
-| [babysea.ai/pricing-plan](https://babysea.ai/pricing-plan)   | Subscription plans, included credits, rate limits, SLAs.            |
-| [babysea.ai/faq](https://babysea.ai/faq)                     | Frequently asked questions.                                         |
-| [babysea.ai/support](https://babysea.ai/support)             | Contact support.                                                    |
-| [status.babysea.ai](https://status.babysea.ai)               | Real-time platform status and incident history.                     |
-
-#### Legal and compliance
-
-Use the pages below for procurement, vendor review, and compliance review. If you need a counter-signed copy of the DPA or the current subprocessor list for your records, request one from [babysea.ai/support](https://babysea.ai/support).
-
-| Document                                                                        | When you need it                                                               |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| [Terms of Use](https://babysea.ai/terms-of-use)                                 | Master agreement governing your use of BabySea.                                |
-| [API & Inference Terms](https://babysea.ai/api-and-inference)                   | Terms specific to the API, SDK, and inference workloads.                       |
-| [Service Level Terms](https://babysea.ai/service-level-terms)                   | Uptime SLA, support response, and credit remedies.                             |
-| [Account & Workspace Terms](https://babysea.ai/account-and-workspace)           | Account, workspace, and team-membership terms.                                 |
-| [Billing & Credit Terms](https://babysea.ai/billing-and-credit)                 | Credit lifecycle, refunds, plan changes, and invoicing.                        |
-| [Privacy Policy](https://babysea.ai/privacy-policy)                             | What we collect, how we use it, your rights.                                   |
-| [Data Processing Agreement (DPA)](https://babysea.ai/data-processing-agreement) | GDPR/UK GDPR processor terms. BabySea acts as **processor** for customer data. |
-| [List of Subprocessors](https://babysea.ai/list-of-subprocessors)               | Current subprocessors: inference providers, infra, and observability.          |
-| [Data Sovereignty](https://babysea.ai/data-sovereignty)                         | Where each region stores and processes data: US, EU, JP.                       |
-| [Data Lifecycle](https://babysea.ai/data-lifecycle)                             | Retention, deletion, and export of generations and account data.               |
-| [Cookies Policy](https://babysea.ai/cookies-policy)                             | Cookies used by babysea.ai.                                                    |
-| [AI Principles](https://babysea.ai/ai-principles)                               | Our principles for operating a generative-media control plane.                 |
-| [AI Service Terms](https://babysea.ai/ai-service-terms)                         | Acceptable use of generated content.                                           |
-| [AI Providers Policy](https://babysea.ai/ai-providers-policy)                   | How upstream providers fit into our service.                                   |
-| [Security](https://babysea.ai/security)                                         | Security overview, controls, and disclosure program.                           |
-| [Acknowledgments](https://babysea.ai/acknowledgments)                           | Security researchers credited for responsible disclosure.                      |
+_Using `babysea-sdk`? Open a PR to add yourself._
 
 ### Contributing
 
-We welcome PRs, issues, and design discussion. See [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), and [SECURITY.md](SECURITY.md).
-
-See [CHANGELOG.md](CHANGELOG.md) for release notes.
+We welcome PRs, issues, and design discussion. See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and [`SECURITY.md`](SECURITY.md).
 
 ## 12. License
 

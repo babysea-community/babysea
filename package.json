@@ -55,19 +55,19 @@
   },
   "files": [
     "dist",
-    "docs",
-    "examples",
     "CHANGELOG.md",
+    "README.md",
+    "LICENSE",
     "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
-    "README.md",
     "SECURITY.md",
-    "LICENSE",
+    "docs",
+    "examples",
     "socket.json"
   ],
   "sideEffects": false,
   "engines": {
-    "node": ">=22"
+    "node": ">=24.14.0 <25"
   },
   "publishConfig": {
     "access": "public"
@@ -86,7 +86,6 @@
     "exports:check": "npm run build && node --test test/exports.test.mjs",
     "pack:dry-run": "npm pack --dry-run",
     "audit:prod": "npm audit --omit=dev",
-    "sentry:check": "node scripts/sentry-project-check.mjs",
     "check": "pnpm run lint && pnpm run typecheck && pnpm run typecheck:examples && pnpm run test:coverage && pnpm run format",
     "prepublishOnly": "npm run check && npm run build"
   },

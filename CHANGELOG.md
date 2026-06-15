@@ -2,7 +2,7 @@
 
 All notable changes will be documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [Unreleased]
 
 ### Added
 
@@ -25,16 +25,15 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 - Added a GitLab CI pipeline (`.gitlab-ci.yml`) for the standalone SDK repository covering format/lint/typecheck/examples-typecheck verify jobs, coverage tests with Cobertura + LCOV artifacts, tsup build with `exports:check` and `pack:dry-run`, gated SHA256-verified Codecov upload, `pnpm audit --prod --audit-level=high`, pinned Gitleaks secret scan, and the GitLab SAST/Dependency-Scanning/Secret-Detection/Code-Quality templates with Advanced SAST and historic secret scanning enabled.
 - Added SDK contributing and code-of-conduct docs, and included them in the package publish surface.
 - Added SDK lcov coverage generation and Package Check Codecov upload using `coverage/lcov.info`.
-- Added repository `codecov.yml`, trusted CircleCI package/audit/Codecov upload jobs, and a Snyk Security workflow for the standalone BabySea SDK repository.
+- Added repository `codecov.yml`, trusted Codecov upload jobs, and a Snyk Security workflow for the standalone BabySea SDK repository.
 - Added an explicit `--repo-only` SDK GitHub deploy mode for same-version repository refreshes that do not change package versions, push release tags, or create GitHub Releases.
 - Added Dependabot version-update configuration for the standalone BabySea SDK repository.
 
 ### Changed
 
 - **Breaking:** Raised the SDK package engine and documented runtime floor to Node.js 22+, including the README runtime badge shape. Node.js 18 and Node.js 20 are no longer supported by new SDK releases.
-- Updated SDK Package Check, CodeQL, and Sentry workflows to the same Node 24-compatible GitHub Action majors used by the other BabySea OSS repositories.
-- Constrained SDK Codecov uploads to the explicit LCOV report and required `CODECOV_TOKEN` for trusted GitHub Actions and CircleCI uploads.
-- Aligned the SDK Sentry Project Check with the other OSS repositories so explicitly allowed Sentry API permission denials skip strict validation instead of failing repository CI.
+- Updated SDK Package Check and CodeQL workflows to the same Node 24-compatible GitHub Action majors used by the other BabySea OSS repositories.
+- Constrained SDK Codecov uploads to the explicit LCOV report and required `CODECOV_TOKEN` for trusted GitHub Actions uploads.
 - Expanded SDK Dependabot version updates to check npm dependencies daily and GitHub Actions weekly.
 
 ### Fixed
@@ -42,7 +41,6 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 - Added `.prettierignore` and `.pnpm-store` to `.gitignore` so the GitLab CI `verify:format` job no longer recurses into the pnpm content-addressable store and fails on vendored Markdown/JSON inside `.pnpm-store/`, matching the babychain starter's prettier-ignore parity.
 - Replaced SDK base URL trailing-slash normalization with a bounded string scan, resolving the CodeQL polynomial ReDoS alert.
 - Added TypeScript 6 deprecation handling for SDK declaration builds without changing the published package version.
-- Replaced Sentry URL trailing-slash regex normalization with a bounded string scan to avoid CodeQL ReDoS noise.
 
 ## [1.4.6] - 2026-05-21
 
@@ -86,8 +84,6 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 - Added `typecheck:examples`, `test`, `exports:check`, `pack:dry-run`, and `audit:prod` package scripts.
 - Added standalone SDK repository workflows under `.github/workflows/` for CodeQL and SDK publish checks.
 - Added README workflow badges for the standalone CodeQL and SDK Publish Check workflows.
-- Added Sentry code-guard documentation and a README badge for the public `babysea-ai/babysea` SDK repository; no Sentry SDK, DSN, tracing, error-reporting client, or runtime telemetry is bundled.
-- Added `scripts/sentry-project-check.mjs`, a `sentry:check` package script, a README badge, ignored local `.sentryclirc` support, and a scheduled `Sentry Project Check` workflow. The workflow reads Sentry org/project configuration from GitHub Actions secrets, verifies the configured project slug, active status, `other` platform, ownership, and Code Guard rules, and does not add runtime tracking.
 
 ### Changed
 

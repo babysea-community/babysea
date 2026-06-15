@@ -34,7 +34,7 @@ variables:
   CS_DISABLE_DEPENDENCY_LIST: 'false'
   JS_PACKAGE_DIR: ''
   PYTHON_PACKAGE_DIR: ''
-  PNPM_VERSION: '10.19.0'
+  PNPM_VERSION: '11.7.0'
   PNPM_INSTALL_FLAGS: --ignore-scripts
   NPM_CI_FLAGS: --ignore-scripts
   PIP_INSTALL_EXTRAS: '.[dev]'

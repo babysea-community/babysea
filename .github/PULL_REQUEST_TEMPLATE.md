@@ -55,7 +55,7 @@ Write "None" if there are no security implications.
 ## Documentation
 
 - [ ] `README.md`, `AGENTS.md`, `SECURITY.md`, or in-code docs updated where relevant
-- [ ] `CHANGELOG.md` entry added under `## Unreleased` (or a new version section)
+- [ ] `CHANGELOG.md` entry added under `## [Unreleased]` (or a new version section)
 
 ## Checklist
 

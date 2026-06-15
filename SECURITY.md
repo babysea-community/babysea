@@ -15,7 +15,7 @@ Useful reports include the affected route, package, workflow, file, command, sch
 Please report issues such as:
 
 - Authentication, authorization, tenancy, or scope bypass.
-- Exposure of provider credentials, platform tokens, database secrets, webhook secrets, callback secrets, npm tokens, GitHub or GitLab tokens, Sentry tokens, signing keys, or other deployment secrets.
+- Exposure of provider credentials, platform tokens, database secrets, webhook secrets, callback secrets, npm tokens, GitHub or GitLab tokens, signing keys, or other deployment secrets.
 - Webhook signature bypass, replay, or delivery deduplication failures.
 - Unsafe callback signing, callback payload tampering, or untrusted redirect behavior.
 - Cross-user disclosure of prompts, reference media, generated media, request metadata, logs, account data, or private operational details.

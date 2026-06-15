@@ -2,7 +2,6 @@ codecov:
   ci:
     - github.com
     - gitlab.com
-    - circleci.com
   require_ci_to_pass: yes
   notify:
     wait_for_ci: yes
