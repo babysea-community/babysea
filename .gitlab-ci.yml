@@ -318,33 +318,6 @@ dependency:audit:javascript:
       cd "$JS_ABS_DIR"
       if [ "$JS_PM" = 'pnpm' ]; then pnpm audit --prod --audit-level=high; else npm audit --omit=dev --audit-level=high; fi
 
-coverage:upload:
-  stage: security
-  image: alpine:3.22
-  allow_failure: true
-  needs:
-    - job: test:javascript
-      artifacts: true
-  timeout: 5m
-  rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-    - if: '$CI_COMMIT_TAG'
-  before_script:
-    - apk add --no-cache ca-certificates curl
-  script:
-    - |
-      coverage_file=''
-      for candidate in coverage/lcov.info client/typescript/coverage/lcov.info; do
-        if [ -f "$candidate" ]; then coverage_file="$candidate"; break; fi
-      done
-      if [ -z "$coverage_file" ]; then echo 'No lcov.info was produced; skipping GitLab Codecov upload.'; exit 0; fi
-      if [ -z "${CODECOV_TOKEN:-}" ]; then echo 'CODECOV_TOKEN is not configured; skipping GitLab Codecov upload.'; exit 0; fi
-      if [ -z "${CODECOV_UPLOADER_SHA256:-}" ]; then echo 'CODECOV_UPLOADER_SHA256 is not configured; skipping GitLab Codecov upload.'; exit 0; fi
-      curl --fail --location --retry 3 --retry-delay 2 --output codecov "${CODECOV_UPLOADER_URL:-https://uploader.codecov.io/latest/linux/codecov}"
-      printf '%s  codecov\n' "$CODECOV_UPLOADER_SHA256" | sha256sum -c -
-      chmod +x codecov
-      ./codecov -Z -t "$CODECOV_TOKEN" -f "$coverage_file" -F gitlab -n "$CI_JOB_NAME" -C "$CI_COMMIT_SHA"
-
 secret:scan:
   stage: security
   image:

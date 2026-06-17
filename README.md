@@ -32,7 +32,6 @@ Execution control plane SDK for generative media.
 <strong>Checks</strong>
 
 [![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/babysea?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/babysea/-/commits/main)
-[![Codecov](https://img.shields.io/codecov/c/github/babysea-community/babysea?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=FDUBOJu692)](https://codecov.io/github/babysea-community/babysea)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/codeql.yml)
 [![Package](https://img.shields.io/github/actions/workflow/status/babysea-community/babysea/package-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/babysea/actions/workflows/package-check.yml)
 
@@ -982,12 +981,11 @@ Current SDK surface:
 - [x] Network, timeout, retry, and terminal generation error classes
 - [x] HMAC webhook verification and event type guards
 - [x] Scoped API key documentation
-- [x] Lcov package coverage and Codecov upload when repository credentials are available
 - [x] Runtime examples for Node.js, Next.js, Edge, Cloudflare Workers, and browser read-only flows
 
 ## 10. Security and Compliance
 
-BabySea SDK publishes its trust signals through public GitLab and GitHub checks so contributors can inspect the actual CI configuration, jobs, and reports.
+The project publishes its trust signals through public GitHub, GitLab, or other CI provider checks so contributors can inspect the actual CI configuration, jobs, and reports.
 
 ## 11. Community
 

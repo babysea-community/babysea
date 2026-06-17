@@ -22,10 +22,8 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 ### Added
 
 - Added GitHub issue templates (`.github/ISSUE_TEMPLATE/bug_report.yml`, `feature_request.yml`, `config.yml`) and `.github/PULL_REQUEST_TEMPLATE.md` so contributors get a consistent intake form. The template set is identical across all BabySea OSS repos (primitives, starters, SDK) so it can be reused without project-specific adjustments.
-- Added a GitLab CI pipeline (`.gitlab-ci.yml`) for the standalone SDK repository covering format/lint/typecheck/examples-typecheck verify jobs, coverage tests with Cobertura + LCOV artifacts, tsup build with `exports:check` and `pack:dry-run`, gated SHA256-verified Codecov upload, `pnpm audit --prod --audit-level=high`, pinned Gitleaks secret scan, and the GitLab SAST/Dependency-Scanning/Secret-Detection/Code-Quality templates with Advanced SAST and historic secret scanning enabled.
+- Added a GitLab CI pipeline (`.gitlab-ci.yml`) for the standalone SDK repository covering format/lint/typecheck/examples-typecheck verify jobs, coverage tests with Cobertura + LCOV artifacts, tsup build with `exports:check` and `pack:dry-run`, `pnpm audit --prod --audit-level=high`, pinned Gitleaks secret scan, and the GitLab SAST/Dependency-Scanning/Secret-Detection/Code-Quality templates with Advanced SAST and historic secret scanning enabled.
 - Added SDK contributing and code-of-conduct docs, and included them in the package publish surface.
-- Added SDK lcov coverage generation and Package Check Codecov upload using `coverage/lcov.info`.
-- Added repository `codecov.yml`, trusted Codecov upload jobs, and a Snyk Security workflow for the standalone BabySea SDK repository.
 - Added an explicit `--repo-only` SDK GitHub deploy mode for same-version repository refreshes that do not change package versions, push release tags, or create GitHub Releases.
 - Added Dependabot version-update configuration for the standalone BabySea SDK repository.
 
@@ -33,7 +31,6 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 - **Breaking:** Raised the SDK package engine and documented runtime floor to Node.js 22+, including the README runtime badge shape. Node.js 18 and Node.js 20 are no longer supported by new SDK releases.
 - Updated SDK Package Check and CodeQL workflows to the same Node 24-compatible GitHub Action majors used by the other BabySea OSS repositories.
-- Constrained SDK Codecov uploads to the explicit LCOV report and required `CODECOV_TOKEN` for trusted GitHub Actions uploads.
 - Expanded SDK Dependabot version updates to check npm dependencies daily and GitHub Actions weekly.
 
 ### Fixed
