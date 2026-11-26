@@ -31,7 +31,7 @@ jobs:
           set -euo pipefail
 
           if find . \
-            \( -path './.git' -o -path './node_modules' -o -path './dist' -o -path './build' -o -path './coverage' -o -path './.next' -o -path './.turbo' -o -path './.pnpm-store' \) -prune -o \
+            \( -path './.git' -o -path './node_modules' -o -path './dist' -o -path './build' -o -path './.next' -o -path './.turbo' -o -path './.pnpm-store' \) -prune -o \
             -type f \( -name '*.js' -o -name '*.jsx' -o -name '*.ts' -o -name '*.tsx' -o -name '*.mjs' -o -name '*.cjs' \) -print -quit | grep -q .; then
             echo 'javascript=true' >> "$GITHUB_OUTPUT"
           else
@@ -39,7 +39,7 @@ jobs:
           fi
 
           if find . \
-            \( -path './.git' -o -path './node_modules' -o -path './dist' -o -path './build' -o -path './coverage' -o -path './.next' -o -path './.turbo' -o -path './.pnpm-store' -o -path './.venv' -o -path './.tox' -o -path './*.egg-info' \) -prune -o \
+            \( -path './.git' -o -path './node_modules' -o -path './dist' -o -path './build' -o -path './.next' -o -path './.turbo' -o -path './.pnpm-store' -o -path './.venv' -o -path './.tox' -o -path './*.egg-info' \) -prune -o \
             -type f -name '*.py' -print -quit | grep -q .; then
             echo 'python=true' >> "$GITHUB_OUTPUT"
           else

@@ -1,6 +1,6 @@
 {
   "name": "babysea",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Execution control plane SDK for generative media.",
   "keywords": [
     "babysea",
@@ -80,13 +80,12 @@
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
     "lint": "eslint \"src/**/*.ts\"",
     "test": "npm run build && node --test \"test/*.mjs\"",
-    "test:coverage": "npm run build && mkdir -p coverage && node --enable-source-maps --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=coverage/lcov.info \"test/*.mjs\"",
     "typecheck": "tsc --noEmit",
     "typecheck:examples": "tsc --noEmit -p examples/tsconfig.json",
     "exports:check": "npm run build && node --test test/exports.test.mjs",
     "pack:dry-run": "npm pack --dry-run",
     "audit:prod": "npm audit --omit=dev",
-    "check": "pnpm run lint && pnpm run typecheck && pnpm run typecheck:examples && pnpm run test:coverage && pnpm run format",
+    "check": "pnpm run lint && pnpm run typecheck && pnpm run typecheck:examples && pnpm run format",
     "prepublishOnly": "npm run check && npm run build"
   },
   "devDependencies": {

@@ -165,8 +165,7 @@ export class BabySeaGenerationFailedError extends Error {
     this.generation = generation;
     this.generation_id = generation.generation_id;
     this.generation_status = generation.generation_status as
-      | 'failed'
-      | 'canceled';
+      'failed' | 'canceled';
     this.generation_error_code = generation.generation_error_code;
   }
 }

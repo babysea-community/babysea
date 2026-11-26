@@ -340,11 +340,7 @@ export interface Generation {
   generation_prediction_id?: string | null;
   // Status
   generation_status?:
-    | 'pending'
-    | 'processing'
-    | 'succeeded'
-    | 'failed'
-    | 'canceled';
+    'pending' | 'processing' | 'succeeded' | 'failed' | 'canceled';
   // Input
   generation_prompt?: string;
   generation_ratio?: string;
@@ -599,10 +595,7 @@ export type ApiKeyScope =
 
 /** Preset scope bundles for common use cases. */
 export type ApiKeyScopePreset =
-  | 'full_access'
-  | 'generate_only'
-  | 'read_only'
-  | 'monitor_only';
+  'full_access' | 'generate_only' | 'read_only' | 'monitor_only';
 
 // ─── Webhook Types ───
 
@@ -653,5 +646,4 @@ export interface CreditAlertWebhookPayload {
 }
 
 export type WebhookPayload =
-  | GenerationWebhookPayload
-  | CreditAlertWebhookPayload;
+  GenerationWebhookPayload | CreditAlertWebhookPayload;

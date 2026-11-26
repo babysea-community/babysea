@@ -55,13 +55,7 @@ const MIN_WAIT_INTERVAL_MS = 500;
  * Detection is best-effort and never throws.
  */
 type SdkRuntime =
-  | 'node'
-  | 'deno'
-  | 'bun'
-  | 'workerd'
-  | 'edge'
-  | 'browser'
-  | 'unknown';
+  'node' | 'deno' | 'bun' | 'workerd' | 'edge' | 'browser' | 'unknown';
 
 function detectRuntime(): { runtime: SdkRuntime; version?: string } {
   const g = globalThis as Record<string, unknown>;
@@ -87,8 +81,7 @@ function detectRuntime(): { runtime: SdkRuntime; version?: string } {
 
   // Node.js
   const proc = g.process as
-    | { versions?: { node?: string; bun?: string } }
-    | undefined;
+    { versions?: { node?: string; bun?: string } } | undefined;
   if (proc?.versions?.node) {
     return { runtime: 'node', version: proc.versions.node };
   }

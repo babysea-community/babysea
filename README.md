@@ -4,7 +4,7 @@
 
 # BabySea SDK
 
-Execution control plane SDK for generative media.
+Production TypeScript SDK for BabySea, the execution control plane for generative media.
 
 ### One API. One schema. One lifecycle.
 

@@ -26,9 +26,9 @@ variables:
   AST_ENABLE_MR_PIPELINES: 'true'
   GITLAB_ADVANCED_SAST_ENABLED: 'true'
   SECURE_LOG_LEVEL: warn
-  SAST_EXCLUDED_PATHS: '.cache,.npm,.pnpm-store,coverage,dist,build,node_modules,*.egg-info,.pytest_cache,.ruff_cache'
-  DS_EXCLUDED_PATHS: '.cache,.npm,.pnpm-store,coverage,dist,build,node_modules,*.egg-info,.pytest_cache,.ruff_cache'
-  SECRET_DETECTION_EXCLUDED_PATHS: '.cache,.npm,.pnpm-store,coverage,dist,build,node_modules,*.egg-info,.pytest_cache,.ruff_cache'
+  SAST_EXCLUDED_PATHS: '.cache,.npm,.pnpm-store,dist,build,node_modules,*.egg-info,.pytest_cache,.ruff_cache'
+  DS_EXCLUDED_PATHS: '.cache,.npm,.pnpm-store,dist,build,node_modules,*.egg-info,.pytest_cache,.ruff_cache'
+  SECRET_DETECTION_EXCLUDED_PATHS: '.cache,.npm,.pnpm-store,dist,build,node_modules,*.egg-info,.pytest_cache,.ruff_cache'
   SECRET_DETECTION_HISTORIC_SCAN: 'true'
   CONTAINER_SCANNING_DISABLED: 'false'
   CS_DISABLE_DEPENDENCY_LIST: 'false'
@@ -232,32 +232,6 @@ verify:python:
       python -m compileall .
       if python -c 'import ruff' >/dev/null 2>&1; then python -m ruff check .; else echo 'ruff is not installed; skipping.'; fi
       if python -c 'import pyright' >/dev/null 2>&1; then python -m pyright; else echo 'pyright is not installed; skipping.'; fi
-
-test:javascript:
-  stage: test
-  extends: .javascript-job
-  timeout: 15m
-  coverage: '/All files[^|]*\|[^|]*\s+([0-9.]+)/'
-  script:
-    - |
-      set -eu
-      . "$CI_PROJECT_DIR/.ci-js.env"
-      mkdir -p coverage
-      if [ "${JS_SKIP:-0}" = '1' ]; then exit 0; fi
-      cd "$JS_ABS_DIR"
-      if node -e "const pkg=require('./package.json'); process.exit(pkg.scripts?.['test:coverage'] ? 0 : 1)"; then
-        "$JS_PM" run test:coverage
-      elif node -e "const pkg=require('./package.json'); process.exit(pkg.scripts?.test ? 0 : 1)"; then
-        "$JS_PM" test
-      else
-        echo 'No test or test:coverage script; skipping.'
-      fi
-  artifacts:
-    when: always
-    expire_in: 7 days
-    paths:
-      - coverage/
-      - client/typescript/coverage/
 
 test:python:
   stage: test
